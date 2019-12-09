@@ -17,6 +17,7 @@ const db = knex({
   const app = express();
   app.use(bodyParser.json());
   app.use(cors());
+  
 
   app.get('/', (req, res) => {
     res.send(db.users)
@@ -25,6 +26,6 @@ const db = knex({
   app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)});
   app.post('/signin', (req, res) => {register.handleSignin(req, res, db, bcrypt)})
 
-  app.listen(process.env.PORT, () =>{
+  app.listen(process.env.PORT || 3000, () =>{
     console.log(`app is listening ${process.env.PORT}`)
 })

@@ -10,6 +10,7 @@ const handleRegister = (req, res, db, bcrypt) => {
            email: email,
            username: username,
            password: hash,
+           role: 'user',
         })
         .into('login')
         .returning('email')
@@ -21,7 +22,6 @@ const handleRegister = (req, res, db, bcrypt) => {
                 username: username,
                 email: loginEmail[0],
                 phonenumber: phone,
-                role: 'user',
                 joined: new Date()
             }).then(user => {
                 res.json(user[0])
