@@ -25,6 +25,6 @@ const db = knex({
   app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)});
   app.post('/signin', (req, res) => {register.handleSignin(req, res, db, bcrypt)})
 
-  app.listen(process.env.PORT || 3000, () =>{
+  app.listen(process.env.PORT, () =>{
     console.log(`app is listening ${process.env.PORT}`)
 })
