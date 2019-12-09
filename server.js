@@ -20,10 +20,10 @@ const db = knex({
   app.use(bodyParser.json());
   app.use(cors());
 
-  app.listen(3000, () =>{
-      console.log('app is listening on port 3000')
-  })
-
+ 
   app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)});
-
   app.post('/signin', (req, res) => {register.handleSignin(req, res, db, bcrypt)})
+
+  app.listen(process.env.PORT || 3000, () =>{
+    console.log(`app is listening ${process.env.PORT}`)
+})
