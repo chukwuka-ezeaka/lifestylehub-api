@@ -6,25 +6,34 @@ const bcrypt = require('bcryptjs');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin')
 
-const db = knex({
+/*const db = knex({
     client: 'pg',
     connection: {
       connectionString : process.env.DATABASE_URL,
       ssl: true
+    }
+  });*/
+
+  const db = knex({
+    client: 'pg',
+    connection: {
+      host : '127.0.0.1',
+      user : 'postgres',
+      password : 'test',
+      database : 'lifestylehub'
     }
   });
 
   const app = express();
   app.use(bodyParser.json());
   app.use(cors());
-  
 
   app.get('/', (req, res) => {
     res.send(db.users)
 })
 
   app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)});
-  app.post('/signin', (req, res) => {register.handleSignin(req, res, db, bcrypt)})
+  app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
 
   app.listen(process.env.PORT || 3000, () =>{
     console.log(`app is listening ${process.env.PORT}`)
