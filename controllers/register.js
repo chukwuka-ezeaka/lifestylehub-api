@@ -21,7 +21,7 @@ const handleRegister = (req, res, db, bcrypt) => {
                 username: username,
                 email: loginEmail[0],
                 phonenumber: phone,
-                accounttype: ' subscriber',
+                accounttype: 'vendor',
                 joined: new Date()
             }).then(user => {
                 res.json(user[0]);
