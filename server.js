@@ -4,7 +4,8 @@ const cors = require('cors');
 const knex = require('knex');
 const bcrypt = require('bcryptjs');
 const register = require('./controllers/register');
-const signin = require('./controllers/signin')
+const signin = require('./controllers/signin');
+const users = require('./controllers/users')
 
 /*const db = knex({
     client: 'pg',
@@ -34,6 +35,7 @@ const signin = require('./controllers/signin')
 
   app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)});
   app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
+  app.get('/dashboard',  (req, res) => {users.handleUsers(req, res, db)})
 
   app.listen(process.env.PORT || 3000, () =>{
     console.log(`app is listening ${process.env.PORT}`)
