@@ -8,17 +8,17 @@ const signin = require('./controllers/signin');
 const users = require('./controllers/users')
 
 //heroku configuration 
-  /*const db = knex({
+  const db = knex({
       client: 'pg',
       connection: {
         connectionString : process.env.DATABASE_URL,
         ssl: true
       }
-    });*/
+    });
 //end heroku config
 
 //localhost configuration
-  const db = knex({
+  /*const db = knex({
     client: 'pg',
     connection: {
       host : '127.0.0.1',
@@ -26,7 +26,7 @@ const users = require('./controllers/users')
       password : 'test',
       database : 'lifestylehub'
     }
-  });
+  });*/
 //end localhost config
 
   const app = express();
